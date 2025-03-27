@@ -1,6 +1,8 @@
-# TheAgoraApp
+# The Agora
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+
+The Agora is a single-page web applicaiton built in Angular 19.2.4 that aggregates news articles obtained from NewsAPI.  
 
 ## Development server
 
