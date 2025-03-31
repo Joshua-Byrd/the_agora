@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { TopicButtonsComponent } from '../topic-buttons/topic-buttons.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [SearchBarComponent, TopicButtonsComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
+
 export class NavbarComponent {
 
+  /**
+   * Receives the search terms from search-bar.component.ts and passes it to the NewsService
+   * @param term the keywords searched for by the user
+   */
+  onSearchTermReceipt(term: string) {
+    console.log("search term received from child: ", term);
+  }
 }

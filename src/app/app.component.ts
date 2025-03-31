@@ -25,7 +25,6 @@ import { KanbanBoardComponent } from './components/kanban-board/kanban-board.com
 })
 
 export class AppComponent {
-  title: string = 'The Agora';
-  subTitle: string = 'Coming soon for all your news needs!';
+  
 }
 

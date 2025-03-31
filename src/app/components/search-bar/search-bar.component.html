@@ -1,1 +1,5 @@
-<p>search-bar works!</p>
+<form (submit) = "searchHandler()" style="display: flex; gap: 0.5rem;">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search news articles..." name="search"
+        style="flex: 1; padding: 0.5rem;" >
+    <button type="submit" style="padding: 0.5rem 1rem;">Search</button>
+</form>
