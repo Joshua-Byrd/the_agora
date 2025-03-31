@@ -1,9 +1,9 @@
 <header style="background-color: #f0f0f0; padding: 1rem; border-bottom: 1px solid #ccc;">
     <h1 style="margin: 0; font-size: 1.75rem;">The Agora</h1>
     
-    <!-- search bar listens for the search event-->
+    <!-- search bar listens for the search event from the search bar component-->
     <app-search-bar (search)="onSearchTermReceipt($event)"></app-search-bar>
 
     <!-- topic buttons -->
-    <app-topic-buttons></app-topic-buttons>
+    <app-topic-buttons (selectedTopic)="onTopicReceipt($event)"></app-topic-buttons>
 </header>

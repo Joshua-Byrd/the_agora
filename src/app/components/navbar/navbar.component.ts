@@ -18,4 +18,12 @@ export class NavbarComponent {
   onSearchTermReceipt(term: string) {
     console.log("search term received from child: ", term);
   }
+
+  /**
+   * Receives the topic emitted by topic.buttons.component.ts and passes it to the NewsService
+   * @param topic the topic of news articles to display (i.e. the button that was clicked)
+   */
+  onTopicReceipt(topic: string) {
+    console.log("topic received from child: ", topic);
+  }
 }

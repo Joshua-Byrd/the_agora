@@ -18,7 +18,7 @@ export class SearchBarComponent {
   @Output() search = new EventEmitter<string>();
 
   /**
-   * Trims the user's search terms and emits to the parent component
+   * Trims the user's search terms and emits to the parent component (navbar)
    * search -> navbar -> NewsService
    */
   searchHandler(): void {

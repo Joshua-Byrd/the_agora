@@ -1,1 +1,9 @@
-<p>topic-buttons works!</p>
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: space-around;">
+    <!-- iterate through the topic array and create a button for each -->
+     <button
+        *ngFor="let topic of topics"
+        (click) = selectTopic(topic)
+        style="padding: 0.5rem 1rem; border: none; background-color: #eee; border-radius: 4px; cursor: pointer;">
+        {{topic }}
+    </button>
+</div>
