@@ -23,7 +23,7 @@ export class TopicButtonsComponent {
   @Output() selectedTopic = new EventEmitter<string>;
 
   /**
-   * Emits the selected topic to the parent component (navbar)
+   * Emits the selected topic to the parent component (navbar) ot be used in an API call
    * topic button -> navbar -> NewsService
    * @param topic 
    */

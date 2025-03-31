@@ -1,9 +1,10 @@
-<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: space-around;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-around;">
     <!-- iterate through the topic array and create a button for each -->
-     <button
+     <!-- when clicked, each button emits the topic to the navbar  -->
+    <button
         *ngFor="let topic of topics"
         (click) = selectTopic(topic)
         style="padding: 0.5rem 1rem; border: none; background-color: #eee; border-radius: 4px; cursor: pointer;">
-        {{topic }}
+        {{topic | titlecase }}
     </button>
 </div>
