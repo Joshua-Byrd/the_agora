@@ -58,4 +58,30 @@ export class NewsService {
         this.articlesSubject.next(response.articles);
       })
   }
+
+  /**
+   * makes a GET request with the search terms that user searches for
+   * @param query the search terms a user has entered
+   */
+  searchArticles(query: string): void {
+    
+    //create request parameters object
+    const params = new HttpParams()
+      .set('apiKey', this.apiKey)
+      .set('q', query)
+    
+      //make the GET request
+    this.http.get<{articles: Article[]}>(`${this.baseUrl}/everything`, { params })
+      .subscribe(response => {
+        this.articlesSubject.next(response.articles);
+      })
+  }
+
+  /**
+   * sets the currently selected article (the article to display) to be the given article
+   * @param article the article to be displayed
+   */
+  selectArticle(article: Article): void {
+    this.selectedArticleSubject.next(article);
+  }
 }
