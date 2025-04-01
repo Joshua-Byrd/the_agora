@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarouselComponent } from './carousel.component';
+import { ArticleModalComponent } from './article-modal.component';
 
-describe('CarouselComponent', () => {
-  let component: CarouselComponent;
-  let fixture: ComponentFixture<CarouselComponent>;
+describe('ArticleModalComponent', () => {
+  let component: ArticleModalComponent;
+  let fixture: ComponentFixture<ArticleModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CarouselComponent]
+      imports: [ArticleModalComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CarouselComponent);
+    fixture = TestBed.createComponent(ArticleModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

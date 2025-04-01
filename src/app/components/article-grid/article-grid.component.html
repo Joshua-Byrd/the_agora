@@ -1,0 +1,10 @@
+<section class="article-grid">
+    <!-- display each article card with image, title, description (first 100 chars), and source-->
+    <div class="card" *ngFor="let article of articles" (click)="onSelect(article)">
+        <img [src]="article.urlToImage" alt="Article image" />
+        <div class="card-body">
+            <h3>{{ article.title }}</h3>
+            <small>{{ article.source.name }}</small>
+        </div>
+    </div>
+</section>

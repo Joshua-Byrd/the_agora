@@ -16,21 +16,22 @@ export interface Article {
 }
 
 @Injectable({
+  //NewsService is a singleton
   providedIn: 'root'
 })
 
 export class NewsService {
   
-  //if downloading and running from Github, change this to your own API key
+  //remember to remove this after the project is done (the repo is public)
   private apiKey = '8aaee90f51a245999fc29a980d1ce20c';
   //the base URL for NewsAPI
   private baseUrl = 'https://newsapi.org/v2';
 
-  //stores the currently downloaded articles
+  //observable for the current collection of articles
   private articlesSubject = new BehaviorSubject<Article[]>([]);
   articles$ = this.articlesSubject.asObservable();
 
-  //the article currently selected for display
+  //observable for the currently select article (to be displayed)
   private selectedArticleSubject = new BehaviorSubject<Article | null>(null);
   selectedArticle$ = this.selectedArticleSubject.asObservable();
 
@@ -55,6 +56,7 @@ export class NewsService {
     //make the GET request
     this.http.get<{articles: Article[]}>(`${this.baseUrl}/top-headlines`, { params })
       .subscribe(response => {
+        //notify subscribers to articlesSubject
         this.articlesSubject.next(response.articles);
       })
   }
@@ -73,6 +75,7 @@ export class NewsService {
       //make the GET request
     this.http.get<{articles: Article[]}>(`${this.baseUrl}/everything`, { params })
       .subscribe(response => {
+        //notify subscribers
         this.articlesSubject.next(response.articles);
       })
   }
@@ -82,6 +85,7 @@ export class NewsService {
    * @param article the article to be displayed
    */
   selectArticle(article: Article): void {
+    //when an article is selected, notify subscribers (the main component)
     this.selectedArticleSubject.next(article);
   }
 }
