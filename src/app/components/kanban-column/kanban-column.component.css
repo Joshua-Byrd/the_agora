@@ -4,7 +4,7 @@
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 0.75rem;
-    max-height: 40vh;
+    max-height: 50vh;
     overflow-y: auto;
     width: 100%;
   }
