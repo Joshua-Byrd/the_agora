@@ -20,4 +20,11 @@ export class ArticleModalComponent implements OnInit {
     })
   }
 
+  /**
+   * closes the modal by setting the article to null.
+   */
+  closeModal(): void {
+    this.newsService.selectArticle(null);
+  }
+
 }

@@ -1,27 +1,15 @@
-<div *ngIf="article; else noArticle" class="article-container">
-
-    <h2>{{ article.title }}</h2>
-  
-    <img *ngIf="article.urlToImage" [src]="article.urlToImage" alt="Article image" />
-  
-    <div class="meta">
-      <span><strong>Source:</strong> {{ article.source.name }}</span> |
-      <span><strong>Published:</strong> {{ article.publishedAt | date:'medium' }}</span>
-    </div>
-  
+<!-- modal only renders when article is not null -->
+<div class="modal-overlay" *ngIf="article" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-button" (click)="closeModal()">x</button>
+    <h2>{{ article.title}}</h2>
+    <img *ngIf="article.urlToImage" [src]="article.urlToImage" alt="article image">
+    <p class="meta">
+      <strong>{{ article.source.name }}</strong> -  
+      {{ article.publishedAt | date:'medium' }}
+    </p>
     <p>{{ article.description }}</p>
-  
-    <a 
-      [href]="article.url" 
-      target="_blank" 
-      rel="noopener"
-      class="read-more">
-      🔗 Read Full Article
-    </a>
-  
+    <a [href]="article.url" target="_blank" rel="noopener" class="read-more">🔗 Read Full Article</a>
   </div>
-  
-  <ng-template #noArticle>
-    <p style="text-align: center; padding: 1rem;">Select an article to view details</p>
-  </ng-template>
+</div>
   

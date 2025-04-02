@@ -1,1 +1,23 @@
-<p>kanban-column works!</p>
+<div class="column">
+    <h3>{{ title }}</h3>
+
+    <!-- only render cards if not the trash (read) column -->
+    <ng-container *ngIf="!isTrash">
+        <div class="card-list">
+            <div class="card" *ngFor="let article of articles">
+                <img [src]="article.urlToImage" alt="Article image" />
+                <div class="card-body">
+                    <h3>{{ article.title }}</h3>
+                    <small>{{ article.source.name }}</small>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- for the trash column -->
+    <ng-container *ngIf="isTrash">
+        <div class="trash">
+            <p>🗑️ Drag here to mark as read</p>
+          </div>
+    </ng-container>
+</div>

@@ -22,7 +22,7 @@ export interface Article {
 
 export class NewsService {
   
-  //remember to remove this after the project is done (the repo is public)
+  //remember to remove this after the project is done (because the repo is public)
   private apiKey = '8aaee90f51a245999fc29a980d1ce20c';
   //the base URL for NewsAPI
   private baseUrl = 'https://newsapi.org/v2';
@@ -41,9 +41,9 @@ export class NewsService {
 
   /**
    * makes a GET request to the NewsAPI to retrieve the top headlines/atricles.  If the category is
-   * present (i.e. a topic button has been clicked), retrieves tht etop headlines in that category.
+   * present (i.e. a topic button has been clicked), retrieves th etop headlines in that category.
    * Otherwise retrieves the general top headlines (this is the starting state when the page loads).
-   * @param category an optional category form which to retrieve articles - directly corresponds to
+   * @param category an optional category from which to retrieve articles - directly corresponds to
    * topic buttons
    */
   getTopHeadlines(category?: string): void {
@@ -51,7 +51,8 @@ export class NewsService {
     const params = new HttpParams()
       .set('apiKey', this.apiKey)
       .set('country', 'us')
-      .set('category', category ?? '');
+      .set('category', category ?? '')
+      .set('pageSize', 30);
     
     //make the GET request
     this.http.get<{articles: Article[]}>(`${this.baseUrl}/top-headlines`, { params })
@@ -71,6 +72,7 @@ export class NewsService {
     const params = new HttpParams()
       .set('apiKey', this.apiKey)
       .set('q', query)
+      .set('pageSize', 30);
     
       //make the GET request
     this.http.get<{articles: Article[]}>(`${this.baseUrl}/everything`, { params })
@@ -84,7 +86,7 @@ export class NewsService {
    * sets the currently selected article (the article to display) to be the given article
    * @param article the article to be displayed
    */
-  selectArticle(article: Article): void {
+  selectArticle(article: Article | null): void {
     //when an article is selected, notify subscribers (the main component)
     this.selectedArticleSubject.next(article);
   }

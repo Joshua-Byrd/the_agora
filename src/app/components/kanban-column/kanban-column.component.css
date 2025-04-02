@@ -1,0 +1,38 @@
+.column {
+
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.75rem;
+    max-height: 40vh;
+    overflow-y: auto;
+    width: 100%;
+  }
+  
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  .trash {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #777;
+    background-color: #f2f2f2;
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+  }
+  

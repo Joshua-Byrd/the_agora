@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 //import all components
@@ -19,7 +20,8 @@ import { KanbanBoardComponent } from './components/kanban-board/kanban-board.com
     TopicButtonsComponent,
     ArticleGridComponent,
     ArticleModalComponent,
-    KanbanBoardComponent
+    KanbanBoardComponent,
+    DragDropModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
