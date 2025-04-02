@@ -8,6 +8,10 @@
     overflow-y: auto;
     width: 100%;
   }
+
+  .title {
+    text-align: center;
+  }
   
   .card-list {
     display: flex;

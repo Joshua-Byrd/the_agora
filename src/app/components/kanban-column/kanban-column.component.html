@@ -1,5 +1,5 @@
 <div class="column">
-    <h3>{{ title }}</h3>
+    <h3 class="title">{{ title | uppercase }}</h3>
 
     <!-- only render cards if not the trash (read) column -->
     <ng-container *ngIf="!isTrash">
