@@ -3,8 +3,8 @@
 
     <!-- only render cards if not the trash (read) column -->
     <ng-container *ngIf="!isTrash">
-        <div class="card-list">
-            <div class="card" *ngFor="let article of articles">
+        <div cdkDropList [cdkDropListData]="articles" (cdkOnDropListDropped)="onDrop($event)" class="card-list">
+            <div class="card" *ngFor="let article of articles" cdkDrag>
                 <img [src]="article.urlToImage" alt="Article image" />
                 <div class="card-body">
                     <h3>{{ article.title }}</h3>
