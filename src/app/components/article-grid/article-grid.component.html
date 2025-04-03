@@ -1,8 +1,12 @@
-<section class="article-grid">
-    <!-- display each article card with image, title, description (first 100 chars), and source-->
+<section
+    cdkDropList 
+    [cdkDropListData]="articles" 
+    
+    class="article-grid">
+    <!-- display each article card with image, title, and source-->
     <div 
         class="card" 
-        *ngFor="let article of articles" 
+        *ngFor="let article of articles"
         (click)="onSelect(article)"
         cdkDrag
         [cdkDragData]="article">
