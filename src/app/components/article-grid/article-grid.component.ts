@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NewsService, Article } from '../../services/news.service';
 
 @Component({
   selector: 'app-article-grid',
-  imports: [CommonModule],
+  imports: [CommonModule, DragDropModule],
   templateUrl: './article-grid.component.html',
   styleUrl: './article-grid.component.css'
 })

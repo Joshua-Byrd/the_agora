@@ -10,28 +10,37 @@ import { Article } from '../../services/news.service';
   styleUrl: './kanban-board.component.css'
 })
 export class KanbanBoardComponent {
-  toBeRead: Article[] = [
-    { title: 'This a headline, perhaps a long one to test how it will format within the Kanban boards', 
-      description: 'Summary 1', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' },
-    { title: 'This a headline, perhaps a long one to test how it will format within the Kanban boards', 
-        description: 'Summary 1', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' },
-    { title: 'This a headline, perhaps a long one to test how it will format within the Kanban boards', 
-          description: 'Summary 1', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' },
-    { title: 'This a headline, perhaps a long one to test how it will format within the Kanban boards', 
-      description: 'Summary 1', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' }        
-  ];
+  
+  //arrays store cards that have been dragged to their respective baords
+  toBeRead: Article[] = [];
+  reading: Article[] = [];
 
-  reading: Article[] = [
-    { title: 'This is also a headline, maybe longer, maybe not as long. This servers the same purpose to test how a card will render',
-       description: 'Summary 2', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' },
-    { title: 'This a headline, perhaps a long one to test how it will format within the Kanban boards', 
-      description: 'Summary 1', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' },
-    { title: 'This a headline, perhaps a long one to test how it will format within the Kanban boards', 
-        description: 'Summary 1', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' },
-    { title: 'This a headline, perhaps a long one to test how it will format within the Kanban boards', 
-          description: 'Summary 1', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' },
-    { title: 'This a headline, perhaps a long one to test how it will format within the Kanban boards', 
-      description: 'Summary 1', url: '', urlToImage: '', source: { name: 'Demo' }, publishedAt: '', content: '' }
-  ];
+  /**
+   * handler for the drop action on the kanban columns. The article is added to the
+   * appropriate target array  (unless being dragged to the read board) and removed from the source
+   * @param target 
+   * @param event 
+   * @returns 
+   */
+  handleDrop(target: 'toBeRead' | 'reading' | 'read', 
+    event: {article: Article, from: Article[] | null}) {
 
+    const { article, from } = event;
+
+    //remove from source if necessary
+    this.toBeRead = this.toBeRead.filter(a => a !== article);
+    this.reading = this.reading.filter(a => a !== article);
+    
+    //if dragging to the read (trash) column, don't add to any array
+    if (target === 'read') {
+      return;
+    }
+
+    //otherwise add to the target array
+    if (target === 'toBeRead') {
+      this.toBeRead.push(article);
+    } else if (target === 'reading') {
+      this.reading.push(article);
+    }
+  }
 }

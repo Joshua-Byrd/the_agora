@@ -1,11 +1,23 @@
 <div class="kanban-board">
 
     <!-- to be read -->
-    <app-kanban-column title="to be read" [articles]="toBeRead"></app-kanban-column>
+    <app-kanban-column 
+        title="to be read" 
+        [articles]="toBeRead" 
+        (articleDropped)="handleDrop('toBeRead', $event)">
+    </app-kanban-column>
 
     <!-- reading -->
-     <app-kanban-column title="reading" [articles]="reading"></app-kanban-column>
+     <app-kanban-column 
+        title="reading" 
+        [articles]="reading"
+        (articleDropped)="handleDrop('reading', $event)">
+    </app-kanban-column>
 
      <!-- trash (read) -->
-      <app-kanban-column title="read" [isTrash]="true"></app-kanban-column>
+      <app-kanban-column 
+        title="read" 
+        [isTrash]="true"
+        (articleDropped)="handleDrop('read', $event)">
+    </app-kanban-column>
 </div>
