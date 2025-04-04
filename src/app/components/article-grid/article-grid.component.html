@@ -1,9 +1,10 @@
+<!-- main grid is a drop list, but articles cannot be dropped onto it -->
 <section
     cdkDropList 
-    [cdkDropListData]="articles" 
-    
+    [cdkDropListData]="articles"
     class="article-grid">
-    <!-- display each article card with image, title, and source-->
+
+    <!-- display each article card with image, title, and source, and make draggable-->
     <div 
         class="card" 
         *ngFor="let article of articles"

@@ -10,10 +10,14 @@ import { Article } from '../../services/news.service';
   styleUrl: './kanban-board.component.css'
 })
 export class KanbanBoardComponent {
+
+  //list of ids for the cdk droplists
+  dropListIds = ['toBeReadList', 'readingList', 'trashList'];
   
-  //arrays store cards that have been dragged to their respective baords
+  //arrays store cards that have been dragged to their respective boards
   toBeRead: Article[] = [];
   reading: Article[] = [];
+  
 
   /**
    * handler for the drop action on the kanban columns. The article is added to the

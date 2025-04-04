@@ -1,9 +1,18 @@
 <div class="kanban-board">
 
     <!-- to be read -->
-    <app-kanban-column 
+    <!-- <app-kanban-column 
         title="to be read" 
         [articles]="toBeRead" 
+        (articleDropped)="handleDrop('toBeRead', $event)"
+        [dropListId]="'toBeReadList'"
+        [connectedDropLists]="dropListIds">
+    </app-kanban-column> -->
+    <app-kanban-column
+        title="To Be Read"
+        [articles]="toBeRead"
+        dropListId="toBeReadList"
+        [connectedDropLists]="dropListIds"
         (articleDropped)="handleDrop('toBeRead', $event)">
     </app-kanban-column>
 
@@ -11,13 +20,17 @@
      <app-kanban-column 
         title="reading" 
         [articles]="reading"
-        (articleDropped)="handleDrop('reading', $event)">
+        (articleDropped)="handleDrop('reading', $event)"
+        [dropListId]="'reading'"
+        [connectedDropLists]="dropListIds">
     </app-kanban-column>
 
      <!-- trash (read) -->
       <app-kanban-column 
         title="read" 
         [isTrash]="true"
-        (articleDropped)="handleDrop('read', $event)">
+        (articleDropped)="handleDrop('read', $event)"
+        [dropListId]="'trashList'"
+        [connectedDropLists]="dropListIds">
     </app-kanban-column>
 </div>

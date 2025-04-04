@@ -5,10 +5,16 @@
     <ng-container *ngIf="!isTrash">
         <div 
             cdkDropList 
-            [cdkDropListData]="articles" 
+            [cdkDropListData]="articles"
             (cdkDropListDropped)="onDrop($event)"
+            [cdkDropListConnectedTo]="connectedDropLists"
+            [id]="dropListId"
             class="card-list">
-            <div class="card" *ngFor="let article of articles" cdkDrag>
+            <div 
+                class="card" 
+                *ngFor="let article of articles" 
+                cdkDrag
+                [cdkDragData]="article">
                 <img [src]="article.urlToImage" alt="Article image" />
                 <div class="card-body">
                     <h3>{{ article.title }}</h3>
@@ -20,7 +26,12 @@
 
     <!-- for the trash column -->
     <ng-container *ngIf="isTrash">
-        <div class="trash">
+        <div 
+            cdkDropList 
+            [cdkDropListConnectedTo]="connectedDropLists"
+            [id]="dropListId"
+            (cdkDropListDropped)="onDrop($event)"
+            class="trash-zone">
             <p>🗑️ Drag here to mark as read</p>
           </div>
     </ng-container>
