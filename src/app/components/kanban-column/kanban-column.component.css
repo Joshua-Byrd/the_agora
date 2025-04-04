@@ -1,42 +1,90 @@
 .column {
-
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 0.75rem;
+    width: 200px;
+    height: 250px;
     max-height: 50vh;
     overflow-y: auto;
     width: 100%;
   }
 
-  .title {
-    text-align: center;
-  }
-  
-  .card-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 0.5rem;
-    font-size: 0.85rem;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-  }
+.title {
+  text-align: center;
+}
 
-  .trash {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    color: #777;
-    background-color: #f2f2f2;
-    border: 2px dashed #ccc;
-    border-radius: 6px;
-  }
-  
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  padding: 1rem;
+}
+
+.trash {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: #777;
+  background-color: #f2f2f2;
+  border: 2px dashed #ccc;
+  border-radius: 6px;
+}
+
+.empty-drop-placeholder {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #999;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0.4rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.card-body h3 {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.card-body p {
+  font-size: 0.75rem;
+  margin-bottom: 0.3rem;
+}
+
+.card-body small {
+  font-size: 0.7rem;
+  color: #777;
+}

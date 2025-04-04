@@ -1,20 +1,24 @@
-<!-- main grid is a drop list, but articles cannot be dropped onto it -->
-<section
-    cdkDropList 
-    [cdkDropListData]="articles"
-    class="article-grid">
-
-    <!-- display each article card with image, title, and source, and make draggable-->
-    <div 
-        class="card" 
-        *ngFor="let article of articles"
-        (click)="onSelect(article)"
-        cdkDrag
-        [cdkDragData]="article">
-        <img [src]="article.urlToImage" alt="Article image" />
-        <div class="card-body">
-            <h3>{{ article.title }}</h3>
-            <small>{{ article.source.name }}</small>
-        </div>
+<!-- main grid container -->
+<div 
+  class="article-grid"
+  cdkDropList 
+  id="gridList" 
+  [cdkDropListData]="articles"
+  [cdkDropListConnectedTo]="connectedDropLists">
+  
+  <!-- draggable cards -->
+  <div 
+    class="card" 
+    *ngFor="let article of articles" 
+    cdkDrag 
+    [cdkDragData]="article"
+    (click)="newsService.selectArticle(article)">
+    
+    <img [src]="article.urlToImage" alt="Article image" />
+    
+    <div class="card-body">
+      <h3>{{ article.title }}</h3>
+      <small>{{ article.source.name }}</small>
     </div>
-</section>
+  </div>
+</div>

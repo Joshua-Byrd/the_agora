@@ -1,36 +1,27 @@
-<div class="kanban-board">
+<div class="kanban-board"cdkDropListGroup>
 
-    <!-- to be read -->
-    <!-- <app-kanban-column 
-        title="to be read" 
-        [articles]="toBeRead" 
-        (articleDropped)="handleDrop('toBeRead', $event)"
-        [dropListId]="'toBeReadList'"
-        [connectedDropLists]="dropListIds">
-    </app-kanban-column> -->
     <app-kanban-column
-        title="To Be Read"
-        [articles]="toBeRead"
-        dropListId="toBeReadList"
-        [connectedDropLists]="dropListIds"
-        (articleDropped)="handleDrop('toBeRead', $event)">
-    </app-kanban-column>
+  title="To Be Read"
+  [articles]="toBeRead"
+  [dropListId]="'toBeReadList'"
+  [connectedDropLists]="dropListIds"
+  (articleDropped)="handleDrop('toBeRead', $event)">
+</app-kanban-column>
 
-    <!-- reading -->
-     <app-kanban-column 
-        title="reading" 
-        [articles]="reading"
-        (articleDropped)="handleDrop('reading', $event)"
-        [dropListId]="'reading'"
-        [connectedDropLists]="dropListIds">
-    </app-kanban-column>
+<app-kanban-column
+  title="Reading"
+  [articles]="reading"
+  [dropListId]="'readingList'"
+  [connectedDropLists]="dropListIds"
+  (articleDropped)="handleDrop('reading', $event)">
+</app-kanban-column>
 
-     <!-- trash (read) -->
-      <app-kanban-column 
-        title="read" 
-        [isTrash]="true"
-        (articleDropped)="handleDrop('read', $event)"
-        [dropListId]="'trashList'"
-        [connectedDropLists]="dropListIds">
-    </app-kanban-column>
+<app-kanban-column
+  title="Read"
+  [isTrash]="true"
+  [dropListId]="'trashList'"
+  [connectedDropLists]="dropListIds"
+  (articleDropped)="handleDrop('read', $event)">
+</app-kanban-column>
+
 </div>

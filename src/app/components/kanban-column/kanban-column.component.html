@@ -1,38 +1,33 @@
 <div class="column">
     <h3 class="title">{{ title | uppercase }}</h3>
-
-    <!-- only render cards if not the trash (read) column -->
-    <ng-container *ngIf="!isTrash">
+    <!-- create columns as drop lists and connect to other columns/grid -->
+    <div 
+        cdkDropList 
+        [cdkDropListData]="articles || []"
+        (cdkDropListDropped)="onDrop($event)"
+        [cdkDropListConnectedTo]="connectedDropLists"
+        [id]="dropListId"
+        class="card-list {{ isTrash ? 'trash-zone' : '' }}">
+        
+        <!-- only show this for trash column -->
+        <p *ngIf="isTrash" class="trash-label">🗑️ Drag here to mark as read</p>
+        
+        <!-- only show articles for non-trash columns -->
         <div 
-            cdkDropList 
-            [cdkDropListData]="articles"
-            (cdkDropListDropped)="onDrop($event)"
-            [cdkDropListConnectedTo]="connectedDropLists"
-            [id]="dropListId"
-            class="card-list">
-            <div 
-                class="card" 
-                *ngFor="let article of articles" 
-                cdkDrag
-                [cdkDragData]="article">
-                <img [src]="article.urlToImage" alt="Article image" />
-                <div class="card-body">
-                    <h3>{{ article.title }}</h3>
-                    <small>{{ article.source.name }}</small>
-                </div>
+            class="card" 
+            *ngFor="let article of isTrash ? [] : articles"
+            cdkDrag
+            [cdkDragData]="article"
+            (click)="newsService.selectArticle(article)">
+            <img [src]="article.urlToImage" alt="Article image" />
+            <div class="card-body">
+                <h3>{{ article.title }}</h3>
+                <small>{{ article.source.name }}</small>
             </div>
         </div>
-    </ng-container>
-
-    <!-- for the trash column -->
-    <ng-container *ngIf="isTrash">
-        <div 
-            cdkDropList 
-            [cdkDropListConnectedTo]="connectedDropLists"
-            [id]="dropListId"
-            (cdkDropListDropped)="onDrop($event)"
-            class="trash-zone">
-            <p>🗑️ Drag here to mark as read</p>
-          </div>
-    </ng-container>
+        <!-- create some space for articles to be droppped onto if the array is empty -->
+        <div *ngIf="articles.length === 0 && !isTrash" class="empty-drop-placeholder">
+            Drop articles here
+        </div>
+    </div>
 </div>

@@ -1,16 +1,17 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Article } from '../../services/news.service';
+import { Article, NewsService } from '../../services/news.service';
 import { CdkDropList, CdkDropListGroup, CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-kanban-column',
-  imports: [DragDropModule, CommonModule,],
+  imports: [DragDropModule, CommonModule],
   templateUrl: './kanban-column.component.html',
   styleUrl: './kanban-column.component.css'
 })
 export class KanbanColumnComponent {
 
+  constructor(public newsService: NewsService) {}
   
   //the title of the card that has been dragged to the board
   @Input() title: string = '';
@@ -23,19 +24,14 @@ export class KanbanColumnComponent {
   @Input() connectedDropLists: string[] = [];
 
   //emitter for when an article is dropped
-  @Output() articleDropped = new EventEmitter<{ article: Article, from: Article[] | null }>();
+  @Output() articleDropped = new EventEmitter<CdkDragDrop<Article[]>>();
 
   /**
-   * 
+   * handles drop events
    * @param event 
    */
   onDrop(event: CdkDragDrop<Article[]>) {
-    const article = event.item.data;
-
-    this.articleDropped.emit({
-      article,
-      from: event.previousContainer.data || null
-    })
+    console.log(`[DROP] ${this.title}:`, event.item.data);
+    this.articleDropped.emit(event);
   }
-
 }
