@@ -1,27 +1,27 @@
 <div class="kanban-board"cdkDropListGroup>
 
-    <app-kanban-column
-  title="To Be Read"
-  [articles]="toBeRead"
-  [dropListId]="'toBeReadList'"
-  [connectedDropLists]="dropListIds"
-  (articleDropped)="handleDrop('toBeRead', $event)">
-</app-kanban-column>
+  <app-kanban-column
+    title="To Be Read"
+    [articles]="toBeRead"
+    [dropListId]="'toBeReadList'"
+    [connectedDropLists]="dropListIds"
+    (articleDropped)="handleDrop('toBeRead', $event)">
+  </app-kanban-column>
 
-<app-kanban-column
-  title="Reading"
-  [articles]="reading"
-  [dropListId]="'readingList'"
-  [connectedDropLists]="dropListIds"
-  (articleDropped)="handleDrop('reading', $event)">
-</app-kanban-column>
+  <app-kanban-column
+    title="Reading"
+    [articles]="reading"
+    [dropListId]="'readingList'"
+    [connectedDropLists]="dropListIds"
+    (articleDropped)="handleDrop('reading', $event)">
+  </app-kanban-column>
 
-<app-kanban-column
-  title="Read"
-  [isTrash]="true"
-  [dropListId]="'trashList'"
-  [connectedDropLists]="dropListIds"
-  (articleDropped)="handleDrop('read', $event)">
-</app-kanban-column>
-
+  <app-kanban-column
+    title="Read"
+    [isTrash]="true"
+    [dropListId]="'trashList'"
+    [connectedDropLists]="dropListIds"
+    (articleDropped)="handleDrop('read', $event)">
+  </app-kanban-column>
+  <button (click)="clearAllBoards()">Clear Boards</button>
 </div>

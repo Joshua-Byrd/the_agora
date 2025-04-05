@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { KanbanColumnComponent } from "../kanban-column/kanban-column.component";
-import { Article } from '../../services/news.service';
+import { Article, NewsService } from '../../services/news.service';
 import { CommonModule } from '@angular/common';
 import { PersistenceService } from '../../services/persistence.service';
 
@@ -13,7 +13,9 @@ import { PersistenceService } from '../../services/persistence.service';
 })
 export class KanbanBoardComponent implements OnInit {
 
-  constructor(private persistenceService: PersistenceService) {}
+  constructor(
+      private persistenceService: PersistenceService,
+      private newsService: NewsService) {}
 
   ngOnInit(): void{
     //load boards from local storage when the component loads
@@ -69,6 +71,15 @@ export class KanbanBoardComponent implements OnInit {
     this.persistenceService.saveBoardState('toBeRead', this.toBeRead);
     this.persistenceService.saveBoardState('reading', this.reading);
   }
+
+  clearAllBoards(): void {
+    this.toBeRead = [];
+    this.reading = [];
+
+    this.saveAllBoards();
+  }
+
+
 
 
 }

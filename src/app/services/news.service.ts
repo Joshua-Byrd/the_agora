@@ -22,17 +22,18 @@ export interface Article {
 
 export class NewsService {
   
-  //remember to remove this after the project is done (because the repo is public)
+  //***DONT FORGET TO REMOVE THIS***
   private apiKey = '8aaee90f51a245999fc29a980d1ce20c';
   //the base URL for NewsAPI
   private baseUrl = 'https://newsapi.org/v2';
 
   //observable for the current collection of articles
   private articlesSubject = new BehaviorSubject<Article[]>([]);
-  articles$ = this.articlesSubject.asObservable();
-
   //observable for the currently select article (to be displayed)
   private selectedArticleSubject = new BehaviorSubject<Article | null>(null);
+  
+  //expose read only observables to subscribe to
+  articles$ = this.articlesSubject.asObservable();  
   selectedArticle$ = this.selectedArticleSubject.asObservable();
 
 
@@ -52,18 +53,18 @@ export class NewsService {
       .set('apiKey', this.apiKey)
       .set('country', 'us')
       .set('category', category ?? '')
-      .set('pageSize', 30);
+      .set('pageSize', 24);
     
     //make the GET request
     this.http.get<{articles: Article[]}>(`${this.baseUrl}/top-headlines`, { params })
       .subscribe(response => {
-        //notify subscribers to articlesSubject
+        //push response onto articlesSubject and notify subscribers 
         this.articlesSubject.next(response.articles);
       })
   }
 
   /**
-   * makes a GET request with the search terms that user searches for
+   * makes a GET request with the user's search terms
    * @param query the search terms a user has entered
    */
   searchArticles(query: string): void {
@@ -72,12 +73,12 @@ export class NewsService {
     const params = new HttpParams()
       .set('apiKey', this.apiKey)
       .set('q', query)
-      .set('pageSize', 30);
+      .set('pageSize', 24);
     
       //make the GET request
     this.http.get<{articles: Article[]}>(`${this.baseUrl}/everything`, { params })
       .subscribe(response => {
-        //notify subscribers
+        //push response onto articlesSubject and notify subscribers
         this.articlesSubject.next(response.articles);
       })
   }
