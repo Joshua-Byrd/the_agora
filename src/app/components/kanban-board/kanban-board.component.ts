@@ -72,14 +72,14 @@ export class KanbanBoardComponent implements OnInit {
     this.persistenceService.saveBoardState('reading', this.reading);
   }
 
+  /**
+   * resets and saves both kanban boards
+   */
   clearAllBoards(): void {
     this.toBeRead = [];
     this.reading = [];
 
     this.saveAllBoards();
   }
-
-
-
 
 }
