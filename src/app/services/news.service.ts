@@ -137,7 +137,6 @@ export class NewsService {
       //create request parameters object
       const params = new HttpParams()
         .set('apiKey', this.apiKey)
-        .set('country', 'us')
         .set('q', normalizedQuery)
         .set('pageSize', 24);
       
