@@ -1,6 +1,6 @@
 .column {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    background-color: #ceced1;
+    border: 1px solid #ceced1;
     border-radius: 6px;
     padding: 0.75rem;
     width: 200px;
@@ -35,14 +35,13 @@
 }
 
 .trash-label {
-  height: 50px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
-  color: #777;
-  background-color: #f2f2f2;
-  border: 2px dashed #ccc;
+  color: #222;
+  border: 2px #ccc;
   border-radius: 6px;
 }
 
@@ -52,10 +51,9 @@
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  color: #999;
-  border: 2px dashed #ccc;
+  color: #222;
+  border: 2px #ccc;
   border-radius: 4px;
-  background-color: #fafafa;
 }
 
 .card:hover {
@@ -69,8 +67,9 @@
 }
 
 .card-body {
+  font-family: Arial, Helvetica, sans-serif;
   padding: 0.4rem;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   line-height: 1.2;
 }
 
@@ -85,6 +84,7 @@
 }
 
 .card-body small {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.7rem;
   color: #777;
 }

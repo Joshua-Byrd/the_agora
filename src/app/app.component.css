@@ -1,4 +1,6 @@
 .main-layout {
+    background-color: #fefefe;
+    color: #222222;
     margin-left: auto;
     margin-right: auto;
     display: flex; 

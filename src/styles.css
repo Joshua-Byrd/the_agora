@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* 
+color palette
+
+Rose Gold: #bd8c7d
+
+Soft Gold: #f9efe2
+
+Light Gray: #fefefe
+
+Onyx: #49494b
+*/
+
+.inter-logo-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: thin;
+  }
+
+  .merriweather-sans-heading-font {
+    font-family: "Merriweather Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: bold;
+  }
+
+  .merriweather-sans-text-font {
+    font-family: "Merriweather Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: light;
+  }
+
+  button {
+  background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }

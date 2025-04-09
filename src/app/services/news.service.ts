@@ -58,42 +58,51 @@ export class NewsService {
     const cacheKey = `${this.cacheKeyPrefix}top_${category}`;
     const now = Date.now();
 
-    //try to load from cache
-    const cached = localStorage.getItem(cacheKey);
-    if (cached) {
-      const parsed: { timestamp: number; articles: Article[] } = JSON.parse(cached);
-      //if the current time is less than the TTL (1 hour), set the articlesSubject as the loaded articles
-      if (now - parsed.timestamp < this.cacheTTL) {
-        console.log(`Loaded top headlines for "${category}" from cache.`);
-        this.articlesSubject.next(parsed.articles);
-      }
-    } else {
-      //if no cached articles or past the TTL, fetch the articles from the API:
+    
+    //flag to determine whether to make an API call or load from cache
+    let shouldFetch = true;
 
-      //create request parameters object
+    //try to load from cache first
+    const cached = localStorage.getItem(cacheKey);
+    
+    if (cached) {
+      try {
+        const parsed: { timestamp: number; articles: Article[] } = JSON.parse(cached);
+        //if the cache exists, check the timestamp to amke sure it's not stale
+        if (now - parsed.timestamp < this.cacheTTL) {
+          console.log(`Loaded top headlines for "${category}" from cache.`);
+          this.articlesSubject.next(parsed.articles);
+          //if loading from cache, set the flag to false
+          shouldFetch = false;
+        }
+      } catch (err) {
+        console.warn(`Error parsing cache for "${category}"`, err);
+      }
+    }
+
+    //if the flad hasn't been set to false, make the API call
+    if (shouldFetch) {
+      //parameters for NewsAPI
       const params = new HttpParams()
         .set('apiKey', this.apiKey)
         .set('country', 'us')
         .set('category', category ?? '')
         .set('pageSize', 24);
-      
-      //make the GET request
-      this.http.get<{articles: Article[]}>(`${this.baseUrl}/top-headlines`, { params })
+
+      this.http.get<{ articles: Article[] }>(`${this.baseUrl}/top-headlines`, { params })
         .subscribe(response => {
           const articles = response.articles;
-          //push response onto articlesSubject and notify subscribers 
           this.articlesSubject.next(articles);
-          
-          //cache the articles with current timestamp
+          //after fetching, cache results with current timestamp
           const toCache = {
             timestamp: now,
             articles
           };
-          
           localStorage.setItem(cacheKey, JSON.stringify(toCache));
           console.log(`Fetched and cached top headlines for "${category}"`);
-        })
+        });
     }
+
   }
 
   /**
@@ -106,7 +115,10 @@ export class NewsService {
     const cacheKey = `${this.cacheKeyPrefix}search_${normalizedQuery}`;
     const now = Date.now();
 
-    //try to load from cache
+    //flag to determine whether to make API call or load from cache
+    let shouldFetch = true;
+
+    //try to load from cache first
     const cached = localStorage.getItem(cacheKey);
 
     if (cached) {
@@ -115,8 +127,12 @@ export class NewsService {
       if (now - parsed.timestamp < this.cacheTTL) {
         console.log(`Loaded search results for "${query}" from cache.`);
         this.articlesSubject.next(parsed.articles);
+        //set the flag to false so the API call doesn't happen
+        shouldFetch = false;
       }
-    } else {
+    }
+    
+    if (shouldFetch){
       //if no cached articles or past the TTL, fetch the articles from the API:
       //create request parameters object
       const params = new HttpParams()
@@ -124,7 +140,7 @@ export class NewsService {
         .set('q', normalizedQuery)
         .set('pageSize', 24);
       
-        //make the GET request
+      //make the GET request
       this.http.get<{articles: Article[]}>(`${this.baseUrl}/everything`, { params })
         .subscribe(response => {
           const articles = response.articles;
@@ -143,8 +159,9 @@ export class NewsService {
   }
 
   /**
-   * sets the currently selected article (the article to display) to be the given article
-   * @param article the article to be displayed
+   * misnamed because I originally though NewsAPI returned full articles. actually selects a
+   * headline for display in the modal
+   * @param article the headline to be displayed in the modal
    */
   selectArticle(article: Article | null): void {
     //when an article is selected, notify subscribers (the main component)

@@ -1,4 +1,4 @@
-header {
+header {background-color: #fefefe;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -6,4 +6,19 @@ header {
     margin-right: auto;
     max-width: 1400px;
     padding: 1rem;
+}
+
+#logo-image {
+    width: 50px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin:0;
+}
+
+#navbar-header {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }

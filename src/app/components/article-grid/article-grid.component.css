@@ -3,11 +3,12 @@
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1rem;
   padding: 1rem;
+  background-color: #fefefe;
 }
 
 .card {
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border: 1px solid #ceced1;
   border-radius: 6px;
   cursor: pointer;
   overflow: hidden;
@@ -29,8 +30,9 @@
 }
 
 .card-body {
+  font-family: Arial, Helvetica, sans-serif;
   padding: 0.4rem;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   line-height: 1.2;
 }
 
@@ -45,6 +47,7 @@
 }
 
 .card-body small {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.7rem;
   color: #777;
 }
