@@ -1,4 +1,5 @@
-header {background-color: #fefefe;
+header {
+    background-color: #fefefe;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -20,5 +21,16 @@ h1 {
 #navbar-header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+#logo {
+    display: flex;
+    flex-direction: row;
     gap: 1rem;
+}
+
+#region-select {
+    max-width: 70px;
+    height: 30px;
 }

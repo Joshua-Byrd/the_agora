@@ -1,8 +1,12 @@
 <header>
     <div id="navbar-header">
-        <img src="/assets/images/greek-temple-carbon.png" id="logo-image">
-        <h1 class="inter-logo-font">The Agora</h1>
+        <div id="logo">
+            <img src="/assets/images/greek-temple-carbon.png" id="logo-image">
+            <h1 class="inter-logo-font">The Agora</h1>
+        </div>
+        <!-- <select id="region-select"></select> -->
     </div>
+    
     <!-- search bar listens for the search event from the search bar component-->
     <app-search-bar (search)="onSearchTermReceipt($event)"></app-search-bar>
 
