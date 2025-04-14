@@ -12,6 +12,8 @@ Light Gray: #fefefe
 Onyx: #49494b
 */
 
+/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+
 .inter-logo-font {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
@@ -39,3 +41,6 @@ Onyx: #49494b
     outline: none;
     box-shadow: none;
   }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,3 +1,12 @@
+<!-- article sorting -->
+  <div class="sort-controls">
+    <label for="sort">Sort by: </label>
+    <select id="sort" [(ngModel)]="sortOrder" (change)="sortArticles()">
+      <option value="newest">Newest First</option>
+      <option value="oldest">Oldest First</option>
+    </select>
+  </div>
+
 <!-- main grid container -->
 <div 
   class="article-grid"
@@ -7,7 +16,7 @@
   [cdkDropListConnectedTo]="connectedDropLists">
   
   <!-- draggable cards -->
-  <div 
+  <div
     class="card" 
     *ngFor="let article of articles" 
     cdkDrag 
