@@ -6,12 +6,6 @@
   background-color: #fefefe;
 }
 
-.sort-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-}
-
 .sort-controls {
   align-items: end;
   gap: 1rem;

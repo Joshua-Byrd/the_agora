@@ -10,9 +10,13 @@
     width: 100%;
   }
 
-.title {
+/* h3 > .title {
   text-align: center;
-}
+  position: sticky;
+  top: 0;
+  padding: 0.5rem;
+  z-index: 2;
+} */
 
 .card-list {
   display: flex;
