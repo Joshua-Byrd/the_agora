@@ -23,8 +23,8 @@ export interface Article {
 
 export class NewsService {
   
-  //***My API  key - DONT FORGET TO REMOVE THIS***
-  private apiKey = '8aaee90f51a245999fc29a980d1ce20c';
+  //Add API key from NewsAPI below
+  private apiKey = '<Add API key here>';
   //the base URL for NewsAPI
   private baseUrl = 'https://newsapi.org/v2';
 
